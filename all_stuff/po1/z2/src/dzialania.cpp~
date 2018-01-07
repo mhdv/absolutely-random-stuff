@@ -1,0 +1,103 @@
+#include <iostream>
+
+using namespace std;
+/*
+  Dodaj, PrzeciwnyDodawania, Odejmij, Mnoz, OdwrotnyMnozenia, Dziel.
+*/
+enum Symbol {e,a,b,c,d};
+
+Symbol TabliczkaDzialan[5][5]={{e,a,b,c,d},
+			       {a,d,e,b,c},
+			       {b,e,c,d,a},
+			       {c,b,d,a,e},
+			       {d,c,a,e,b}};
+
+Symbol TabliczkaDzialanMnozenie[5][5]={{e,e,e,e,e},
+				       {e,a,b,c,d},
+				       {e,b,a,d,c},
+				       {e,c,d,b,a},
+				       {e,d,c,a,b}};				
+
+Symbol ElemOdwrotny(Symbol Arg1)
+{
+
+
+Symbol Dodaj(Symbol Arg1, Symbol Arg2)
+{
+	return TabliczkaDzialan[Arg1][Arg2];
+}
+Symbol operator + (Symbol Arg1, Symbol Arg2)
+{
+	return TabliczkaDzialan[Arg1][Arg2];
+}
+
+Symbol Mnoz(Symbol Arg1, Symbol Arg2)
+{
+	return TabliczkaDzialanMnozenie[Arg1][Arg2];
+}
+Symbol operator * (Symbol Arg1, Symbol Arg2)
+{
+	return TabliczkaDzialanMnozenie[Arg1][Arg2];
+}
+
+Symbol Dziel(Symbol Arg1, Symbol Arg2)
+{
+        return TabliczkaDzialanMnozenie[Arg1][Arg2];
+}
+Symbol operator / (Symbol Arg1, Symbol Arg2)
+{
+        return TabliczkaDzialanMnozenie[Arg1][Arg2];
+}
+
+Symbol operator + (Symbol Arg)
+{
+	return Arg;
+}
+
+Symbol operator - (Symbol Arg)
+{
+  Symbol ElemPrzeciwny[]={e, b, a, d, c};
+	return ElemPrzeciwny[Arg];
+}
+
+void Porownaj(Symbol wynik_alg, Symbol wynik_ope, Symbol wynik_fun)
+{
+ cout << ((wynik_alg == wynik_fun) ? "Identyczne" : "Rozne") 
+      << " wyniki wyrazenia algebraicznego i funkcyjnego." << endl;
+
+ cout << ((wynik_ope == wynik_fun) ? "Identyczne" : "Rozne") 
+      << " wyniki wyrazenia operatorowego i funkcyjnego." << endl;
+
+ cout << ((wynik_ope == wynik_alg) ? "Identyczne" : "Rozne") 
+      << " wyniki wyrazenia operatorowego i algebraicznego." << endl;
+}
+
+int main()
+{
+ Symbol wynik_alg, wynik_ope, wynik_fun, x=e, y=d, wynik;
+
+
+ wynik_alg = x + y; // <- Wyrażenie zapisane w sposób zwyczajowy
+ wynik_fun = Dodaj(x,y); // <- Wyrażenie wykorzystujące funkcje
+ wynik_ope = x + +y; // <- Wyrażenie z jawnym wywołaniem operatorów 
+
+ Porownaj(wynik_alg,wynik_ope,wynik_fun);
+
+ wynik_alg = x * y; // <- Wyrażenie zapisane w sposób zwyczajowy
+ wynik_fun = Mnoz(x,y); // <- Wyrażenie wykorzystujące funkcje
+ wynik_ope = x * y; // <- Wyrażenie z jawnym wywołaniem operatorów 
+
+ Porownaj(wynik_alg,wynik_ope,wynik_fun);
+
+ wynik_alg = x / y; // <- Wyrażenie zapisane w sposób zwyczajowy
+ wynik_fun = Dziel(x,y); // <- Wyrażenie wykorzystujące funkcje
+ wynik_ope = x / y; // <- Wyrażenie z jawnym wywołaniem operatorów 
+
+ Porownaj(wynik_alg,wynik_ope,wynik_fun);
+
+ wynik_alg = x * y; // <- Wyrażenie zapisane w sposób zwyczajowy
+ wynik_fun = Mnoz(x,y); // <- Wyrażenie wykorzystujące funkcje
+ wynik_ope = x * y; // <- Wyrażenie z jawnym wywołaniem operatorów 
+ 
+ return 0;
+}

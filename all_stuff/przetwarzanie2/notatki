@@ -1,0 +1,20 @@
+#include<assert.h>
+
+int a=0;
+assert(a!=0)
+
+
+
+
+int **piksele;
+piksele=(int**)malloc(wym_y*sizeof(int*));
+-------
+piksele
+[0]  [1]  [wym_y-1]
+int* int* ... int*
+-------
+
+for(i; i<wym_y; i++)
+{
+	piksele[i]=(int*)malloc(wym_x*sizeof(int))
+}

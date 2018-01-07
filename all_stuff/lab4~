@@ -1,0 +1,47 @@
+du -sh *	-	info o plikach PANAMINT
+###########
+du -sh * |sort -hr	-    info o plikach z sortowaniem PANAMINT
+###########
+alias a='ls -l'	 -	    alias
+###########
+du -sh * | grep [0-9]K$'\t' |sort -nr	-	posortowane info DIABLO
+##########
+for i in G M K; do du -sh * | grep [0-9]$i$'\t' |sort -nr; done
+sortowanie dla większych plików wegług G M K z pętlą for DIABLO
+##########
+alias sortowanie='for i in G M K; do du -sh * | grep [0-9]$i'"$'\t' |sort -nr; done"
+alias do sortowania z pętlą for tak jak wyżej DIABLO
+##########
+find . -name "#*#" | xargs ls -l
+wyświetlenie plików tymczasowych #plik# -   "." to katalog w którym jesteśmy
+##########
+-1 mniej niż dzień temu
+1 dzień temu
++1 więcej niż dzień
+find . -type f -mtime -1|xargs grep ble
+wyszukuje w katalogu pliki modyfikowane mniej niż dzień temu zawierające "ble"
+##########
+for i in {1..5}; do echo $i; done
+wyświetla liczby od 1 do 5 z pętli
+##########
+echo $SHELL
+wyświetla katalog główny z aplikacjami
+##########
+echo uwielbiam programowac	-	wyswietla z nowa linia
+echo -n uwie...			-	bez nowej linii
+echo -e uwielbiam'\t'programowac	- tabulator między słowami
+##########
+mkdir	-	tworzy katalog
+touch	-	tworzy pliki
+for i in *; do echo -n $i |tr x a|xargs mv "$i";done
+pętla która zmienia w nazwach x na a
+##########
+tar -cvf archiwum.tar *		-	tworzy archiwum ze wszystkimi plikami
+tar -xvf archiwum.tar 		-	rozpakowuje
+tar -tvf archiwum.tar		-	wyświetla co jest w archiwum
+tar -rvf archiwum.tar		-	dodaje plik do archiwum
+##########
+chmod		-	zmienia uprawnienia
++x		-	wykonywanie
+##########
+less dnm.sh	-	sprawdzenie zawartości

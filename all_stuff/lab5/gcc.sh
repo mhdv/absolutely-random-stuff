@@ -1,0 +1,1 @@
+for i; do gcc -o "$1" -lm lab3.o czytaj.o konturowanie.o wyswietl.o informacje.o korekcja.o progowanie.o zapisz.o; done
